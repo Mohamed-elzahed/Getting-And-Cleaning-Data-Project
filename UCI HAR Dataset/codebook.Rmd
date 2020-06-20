@@ -1,0 +1,46 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
+Getting and Cleaning data is performed by running the run_analysis.R script. The script contains 5 steps as described in the course’s project definition.
+    1. Download the Dataset
+        ◦ Dataset downloaded and extracted under the folder UCI HAR               Dataset.
+          
+    2. Assign each data to a variable
+        ◦ features <- ‘features.txt’
+        ◦ activities <- ‘activity_labels.txt’
+        ◦ subject_test <- ‘test/subject_test.txt’
+        ◦ x_test <- ‘test/X_test.txt’
+        ◦ y_test <- ‘test/y_test.txt’
+        ◦ subject_train<- ‘train/subject_train.txt’
+        ◦ x_train <- ‘train/X_train.txt’
+        ◦ x_train <- ‘train/X_train.txt’
+          
+    3. Merges the training and the test sets to create one data set
+        ◦ Creating x by merging x_train and x_test using rbind()                  function.
+        ◦ Creating y by merging y_train and y_test using rbind()                  function.
+        ◦ Creating subject by merging subject_train and subject_test              using rbind() function.
+        ◦ Creating mergedData by merging x, y and subject using cbind()           function.
+          
+    4. Extracts only the measurements on the mean and standard deviation        for each measurement
+        ◦ Creating tidyData by sub-setting mergedData, selecting only             columns: subject, code,  and the measurements on the mean and           standard deviation (std) for each measurement.
+          
+    5. Uses descriptive activity names to name the activities in the           data set
+        ◦ Entire numbers in code column of the tidyData replaced with             corresponding activity taken from second column of the                  activities variable.
+          
+    6. Appropriately labels the data set with descriptive variable names
+        ◦ All 'Acc' replaced by 'Accelerometer'.
+        ◦ All  'angle' replaced by 'Angle'.
+        ◦ All  'Gyro' replaced by 'Gyroscope'.
+        ◦ All  'gravity' replaced by 'Gravity'.
+        ◦ All  'BodyBody' replaced by 'Body'.
+        ◦ All  'Mag' replaced by 'Magnitude'.
+        ◦ All  'tBody' replaced by 'TimeBody'.
+        ◦ All  start with ‘f’ or ‘t’ replaced by ‘Frequency’ or ‘Time’            respectively.
+        ◦ All  ‘mean’ , ‘std’ and ‘freq’ replaced by ‘Mean’, ‘STD’ and           ‘Frequency’ respectively.
+          
+    7. From the data set in step 4, creates a second, independent tidy         data set with the average of each variable or each activity and         each subject.
+        ◦ Creating summarized_data by summarizing tidyData taking the             means of each variable, after grouping by subject and                   activity.
+        ◦ Export summarized_data into 'means.txt' file.
+	
